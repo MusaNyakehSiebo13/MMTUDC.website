@@ -6,7 +6,8 @@
     <title>University Debating Council</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
+
+:root {
             --primary-blue: #002244;
             --secondary-blue: #003366;
             --white: #ffffff;
@@ -15,15 +16,17 @@
             --yellow: #f5c518;
         }
 
-        body {
+         body {
             font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: var(--light-gray);
             color: var(--dark-gray);
+            overflow-x: hidden;
         }
 
-        .header {
+      .header {
             background-color: var(--primary-blue);
             color: var(--white);
             padding: 10px 50px;
@@ -31,12 +34,14 @@
             justify-content: space-between;
             align-items: center;
         }
+        
+
 
         .header-contact {
             font-size: 14px;
         }
 
-        .header-search {
+.header-search {
             display: flex;
             align-items: center;
         }
@@ -45,7 +50,7 @@
             margin-left: 20px;
         }
 
-        .navbar {
+  .navbar {
             background-color: var(--white);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             padding: 15px 50px;
@@ -66,7 +71,7 @@
             margin-right: 10px;
         }
 
-        .navbar-brand .logo-text {
+         .navbar-brand .logo-text {
             font-size: 24px;
             font-weight: 700;
             color: var(--primary-white);
@@ -125,15 +130,14 @@
             margin-bottom: 10px;
         }
 
+        
         .hero-content h1 {
             font-size: 48px;
             font-weight: 700;
             margin: 0;
         }
 
-        
-
-        .main-content {
+          .main-content {
             padding: 50px;
             background-color: var(--white);
         }
@@ -198,6 +202,8 @@
             margin-bottom: 15px;
         }
 
+
+
         .profile-card h3 {
             font-size: 18px;
             font-weight: 700;
@@ -231,6 +237,90 @@
             font-size: 14px;
             color: var(--dark-gray);
         }
+
+
+
+
+
+
+
+
+
+
+
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive text */
+h1, h2, h3, h4, h5 {
+  word-wrap: break-word;
+}
+
+/* Responsive layout for sections or grids */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.col {
+  flex: 1 1 300px; /* Minimum 300px per column */
+}
+
+/* Navigation menu example */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #fcfbfb;
+  color: #0a0a0a;
+}
+
+.navbar a {
+  color: #080808;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+/* Mobile menu */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .navbar a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .col {
+    flex: 1 1 45%;
+  }
+}
+
         
         .footer {
             background-color: var(--secondary-blue);
@@ -257,7 +347,7 @@
 <body>
 
     <header class="header">
-        <div class="header-contact">(+232)77-619-436</div>
+        <div class="header-contact">(+232)</div>
        
         </div>
     </header>
@@ -337,10 +427,10 @@
 
     <footer class="footer">
         <div class="footer-contact">
-            📞 +232 77-619-436
+            📞 0227405-1245-001
         </div>
         <div class="footer-social">
-            <a href="#">🐦</a>
+            <a href="#">🐦 debatiss.com</a>
             <a href="#">📸</a>
             <a href="#">🌐</a>
             <a href="#">... wscck</a>
@@ -388,4 +478,3 @@ window.onload = function() {
 
 </body>
 </html>
-
