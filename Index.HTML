@@ -1,4 +1,13 @@
-        :root {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Debating Council</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+
+:root {
             --primary-blue: #002244;
             --secondary-blue: #003366;
             --white: #ffffff;
@@ -7,15 +16,17 @@
             --yellow: #f5c518;
         }
 
-        body {
+         body {
             font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: var(--light-gray);
             color: var(--dark-gray);
+            overflow-x: hidden;
         }
 
-        .header {
+      .header {
             background-color: var(--primary-blue);
             color: var(--white);
             padding: 10px 50px;
@@ -23,12 +34,14 @@
             justify-content: space-between;
             align-items: center;
         }
+        
+
 
         .header-contact {
             font-size: 14px;
         }
 
-        .header-search {
+.header-search {
             display: flex;
             align-items: center;
         }
@@ -37,7 +50,7 @@
             margin-left: 20px;
         }
 
-        .navbar {
+  .navbar {
             background-color: var(--white);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             padding: 15px 50px;
@@ -58,7 +71,7 @@
             margin-right: 10px;
         }
 
-        .navbar-brand .logo-text {
+         .navbar-brand .logo-text {
             font-size: 24px;
             font-weight: 700;
             color: var(--primary-white);
@@ -117,15 +130,14 @@
             margin-bottom: 10px;
         }
 
+        
         .hero-content h1 {
             font-size: 48px;
             font-weight: 700;
             margin: 0;
         }
 
-        
-
-        .main-content {
+          .main-content {
             padding: 50px;
             background-color: var(--white);
         }
@@ -190,6 +202,8 @@
             margin-bottom: 15px;
         }
 
+
+
         .profile-card h3 {
             font-size: 18px;
             font-weight: 700;
@@ -223,3 +237,224 @@
             font-size: 14px;
             color: var(--dark-gray);
         }
+
+
+
+
+
+
+
+
+/* Responsive text */
+h1, h2, h3, h4, h5 {
+  word-wrap: break-word;
+}
+
+/* Responsive layout for sections or grids */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.col {
+  flex: 1 1 300px; /* Minimum 300px per column */
+}
+
+/* Navigation menu example */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #fcfbfb;
+  color: #0a0a0a;
+}
+
+.navbar a {
+  color: #080808;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+/* Mobile menu */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .navbar a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .col {
+    flex: 1 1 45%;
+  }
+}
+
+        
+        .footer {
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .footer-contact {
+            font-size: 18px;
+        }
+
+        .footer-social a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-contact">(+232)</div>
+       
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="IMG-20250414-WA0142.jpg" alt="University Logo">
+            <div class="logo-text">
+                <div>MILTON MARGAI TECHINICAL</div>
+                <div>UNIVERSITY</div>
+            </div>
+        </div>
+        <div class="navbar-links">
+            <a href="#">Home</a>
+            <a href="#">About US</a>
+            <a href="#">Join</a>
+            <a href="#" class="active">Event</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="breadcrumb">MILTON MARGAI TECHINICAL</div>
+            <h1>UNIVERSITY<br>DEBATING COUNCIL</h1>
+    
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="tabs-container">
+            <div class="tab-item active">Upcoming Debate</div>
+            <div class="tab-item">Past Winner</div>
+            <div class="tab-item">Winners</div>
+            <div class="tab-item">Membership</div>
+        </div>
+
+        <div class="content-container">
+            <section class="profiles-section">
+                <h2>Profiles</h2>
+                <div class="profiles-grid">
+                    <div class="profile-card">
+                        <img src="https://via.placeholder.com/100" alt="Profile Image">
+                        <h3>Passions</h3>
+                        <p>Plaisirema are nannereuwalng</p>
+                    </div>
+                    <div class="profile-card">
+                        <img src="https://via.placeholder.com/100" alt="Profile Image">
+                        <h3>Debations</h3>
+                        <p>Debating the future becomes and cacsih cacilisnter alw anisms</p>
+                    </div>
+                    <div class="profile-card">
+                        <img src="https://via.placeholder.com/100" alt="Profile Image">
+                        <h3>Past of Debates</h3>
+                        <p>Younir future trarcerant eniamins enle nisms</p>
+                    </div>
+                    <div class="profile-card">
+                        <img src="https://via.placeholder.com/100" alt="Profile Image">
+                        <h3>Current Events</h3>
+                        <p>Deacirteren edoilaeaul eirtergiers</p>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="blog-section">
+                <h2>Blog</h2>
+                <div class="blog-item">
+                    <h3>Debating Techniques strategies</h3>
+                </div>
+                <h2>Current Events</h2>
+                <div class="blog-item">
+                    <p>The's debaliennatin elaw liew wane</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-contact">
+            📞 0227405-1245-001
+        </div>
+        <div class="footer-social">
+            <a href="#">🐦 debatiss.com</a>
+            <a href="#">📸</a>
+            <a href="#">🌐</a>
+            <a href="#">... wscck</a>
+        </div>
+        
+    </footer>
+    
+    
+       <script>
+// Toggle visibility of sections
+function toggleSection(id) {
+  const section = document.getElementById(id);
+  section.style.display = section.style.display === 'move' ? 'block' : 'none';
+  
+}
+
+// Validate Join form
+function validateJoinForm() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  if (name === '' || email === '') {
+    alert('Please fill in all fields.');
+    return false;
+  }
+  alert('Thank you for joining!');
+  return true;
+}
+
+// Display today's date in Upcoming Debate section
+function showTodayDate() {
+  const today = new Date();
+  const dateString = today.toDateString();
+  document.getElementById('debate-date').textContent = `Next Debate: ${dateString}`;
+}
+
+// Run on page load
+window.onload = function() {
+  showTodayDate();
+};
+</script>
+   
+    
+    
+
+
+</body>
+</html>
