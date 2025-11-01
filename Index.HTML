@@ -6,85 +6,204 @@
     <title>University Debating Council</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-/* General reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+:root {
+            --primary-blue: #002244;
+            --secondary-blue: #003366;
+            --white: #ffffff;
+            --light-gray: #f0f0f0;
+            --dark-gray: #000000ff;
+            --yellow: #f5c518;
+        }
 
-/* Base layout */
-body {
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
-  color: #222;
-  background-color: #fff;
-  overflow-x: hidden;
-}
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+        }
 
-/* Container */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-}
+        .header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 10px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* Responsive images */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+        .header-contact {
+            font-size: 14px;
+        }
 
-/* Responsive text */
-h1, h2, h3, h4, h5 {
-  word-wrap: break-word;
-}
+        .header-search {
+            display: flex;
+            align-items: center;
+        }
 
-/* Responsive layout for sections or grids */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
+        .header-search .icon {
+            margin-left: 20px;
+        }
 
-.col {
-  flex: 1 1 300px; /* Minimum 300px per column */
-}
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
 
-/* Navigation menu example */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background: #222;
-  color: #fff;
-}
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            
+        }
 
-.navbar a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 1rem;
-}
+        .navbar-brand img {
+            height: 30px;
+            margin-right: 10px;
+        }
 
-/* Mobile menu */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    text-align: center;
-  }
+        .navbar-brand .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-white);
+            line-height: 1.2;
+        }
 
-  .row {
-    flex-direction: column;
-  }
+        .navbar-links a {
+            text-decoration: none;
+            color: var(--dark-White);
+            font-weight: 500;
+            margin-left: 30px;
+            padding: 100px 0;
+        }
 
-  .navbar a {
-    display: block;
-    margin: 0.5rem 0;
-  }
-}
+        .navbar-links a:hover {
+            color: var(--secondary-blue);
+        }
 
+        .navbar-links .active {
+            color: var(--white);
+            background-color: var(--primary-blue);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .hero {
+            position: relative;
+            height: 300px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            padding-left: 50px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+             background-image: url('MMTU Logo.jpg?text=Dedating councle'); /* Replace with actual image URL */
+            background-size: cover;
+            background-position: center;
+            filter: brightness(60%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-content .breadcrumb {
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        
+
+        .main-content {
+            padding: 50px;
+            background-color: var(--white);
+        }
+
+        .tabs-container {
+            display: flex;
+            border-bottom: 2px solid var(--light-gray);
+            margin-bottom: 30px;
+        }
+
+        .tab-item {
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--dark-gray);
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-item.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .profiles-section {
+            width: 60%;
+        }
+
+        .profiles-section h2, .blog-section h2 {
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .profile-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .profile-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            color: var(--primary-blue);
+        }
 
         
 
@@ -403,5 +522,6 @@ window.onload = function() {
 
 </body>
 </html>
+
 
 
