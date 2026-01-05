@@ -23,7 +23,7 @@ body{
   background: linear-gradient(180deg,#000000 0%, #071a26 100%);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
-    overflow-x: hidden;
+
 }
 .container{max-width:var(--container);margin:0 auto;padding:0 20px}
 
@@ -105,3 +105,4 @@ a:focus,button:focus,input:focus{outline:3px solid rgba(235, 195, 16, 0.952);out
     text-align: center;
   }
 }
+
