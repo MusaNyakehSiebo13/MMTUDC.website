@@ -1,4 +1,4 @@
-/* MMTU Debating Council - external stylesheet
+4/* MMTU Debating Council - external stylesheet
    Place at: css/style.css
    Uses Roboto (loaded in HTML)
 */
@@ -101,3 +101,19 @@ a:focus,button:focus,input:focus{outline:3px solid rgb(16, 235, 16);outline-offs
     flex-direction: column;
     text-align: center;
                                                       }
+  .row {
+    flex-direction: column;
+  }
+
+  .navbar a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .col {
+    flex: 1 1 45%;
+  }
+                 }
