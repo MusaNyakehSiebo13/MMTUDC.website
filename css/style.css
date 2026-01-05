@@ -94,3 +94,10 @@ img{max-width:100%;height:auto;display:block}
 /* Accessibility */
 a:focus,button:focus,input:focus{outline:3px solid rgb(16, 235, 16);outline-offset:3px}
 .center{display:flex;align-items:center;justify-content:center}
+
+/* Mobile menu */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+                                                      }
