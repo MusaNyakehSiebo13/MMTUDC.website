@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang=”en”>
+<head>
+    <meta charset=”UTF-8”>
+    <meta name=”viewport” content="width=device-width, initial-scale=1.0">
+    <title>Debate Formats | Debating Council</title>
+    <style>
+*{
+            Margin: 0;
+            Padding: 0;
+            Box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --surface-light: #334155;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-2: #818cf8;
+            --border: #334155;
+            --success: #34d399;
+            --warning: #fbbf24;
+        }
+
+        Body {
+            Font-family: ‘Inter’, -apple-system, BlinkMacSystemFont, sans-serif;
+            Background-color: var(--bg);
+            Color: var(--text);
+            Line-height: 1.6;
+            Overflow-x: hidden;
+        }
+
+        /* Navigation */
+        Nav {
+            Position: fixed;
+            Top: 0;
+            Width: 100%;
+            Background: rgba(15, 23, 42, 0.9);
+            Backdrop-filter: blur(10px);
+            Border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            Max-width: 1200px;
+            Margin: 0 auto;
+            Padding: 0 1.5rem;
+            Display: flex;
+            Justify-content: space-between;
+            Align-items: center;
+        }
+
+        .brand {
+            Font-size: 1.25rem;
+            Font-weight: 700;
+            Background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            Background-clip: text;
+        }
+
+        .nav-links {
+            Display: none;
+        }
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            Background: none;
+            Border: none;
+            Color: var(--text);
+            Font-size: 1.5rem;
+            Cursor: pointer;
+            Padding: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            Margin-top: 60px;
+            Padding: 3rem 1.5rem;
+            Text-align: center;
+            Position: relative;
+            Overflow: hidden;
+        }
+
+        .hero::before {
+            Content: ‘’;
+            Position: absolute;
+            Top: -50%;
+            Left: -50%;
+            Width: 200%;
+            Height: 200%;
+            Background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+            Animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            Position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            Font-size: 2.5rem;
+            Font-weight: 800;
+            Margin-bottom: 1rem;
+            Line-height: 1.2;
+        }
+
+        .hero p {
+            Color: var(--text-muted);
+            Font-size: 1.125rem;
+            Max-width: 600px;
+            Margin: 0 auto 2rem;
+        }
+
+        .filter-tabs {
+            Display: flex;
+            Gap: 0.5rem;
+            Justify-content: center;
+            Flex-wrap: wrap;
+            Margin-top: 2rem;
+        }
+
+        .tab {
+            Padding: 0.5rem 1rem;
+            Background: var(--surface);
+            Border: 1px solid var(--border);
+            Border-radius: 9999px;
+            Color: var(--text-muted);
+            Font-size: 0.875rem;
+            Cursor: pointer;
+            Transition: all 0.3s;
+        }
+
+        .tab:hover, .tab.active {
+            Background: var(--accent);
+            Color: var(--bg);
+            Border-color: var(--accent);
+        }
+
+        /* Mobile Horizontal Scroll Container */
+        .mobile-scroll-container {
+            Display: flex;
+            Gap: 1rem;
+            Overflow-x: auto;
+            Padding: 2rem 1.5rem;
+            Scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            Scrollbar-width: none;
+        }
+
+        .mobile-scroll-container::-webkit-scrollbar {
+            Display: none;
+        }
+
+        /* Debate Cards */
+        .debate-card {
+            Min-width: 85vw;
+            Max-width: 85vw;
+            Background: var(--surface);
+            Border: 1px solid var(--border);
+            Border-radius: 20px;
+            Overflow: hidden;
+            Scroll-snap-align: center;
+            Transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .debate-card:hover {
+            Transform: translateY(-5px);
+            Box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            Border-color: var(--accent);
+        }
+
+        .card-header {
+            Padding: 1.5rem;
+            Background: linear-gradient(135deg, var(--surface-light) 0%, var(--surface) 100%);
+            Border-bottom: 1px solid var(--border);
+        }
+
+        .format-tag {
+            Display: inline-block;
+            Padding: 0.25rem 0.75rem;
+            Background: rgba(56, 189, 248, 0.1);
+            Color: var(--accent);
+            Border-radius: 9999px;
+            Font-size: 0.75rem;
+            Font-weight: 600;
+            Text-transform: uppercase;
+            Letter-spacing: 0.05em;
+            Margin-bottom: 0.5rem;
+        }
+
+        .card-header h2 {
+            Font-size: 1.5rem;
+            Font-weight: 700;
+            Margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            Color: var(--text-muted);
+            Font-size: 0.875rem;
+        }
+
+        .card-body {
+            Padding: 1.5rem;
+        }
+
+        .stats-grid {
+            Display: grid;
+            Grid-template-columns: repeat(2, 1fr);
+            Gap: 1rem;
+            Margin-bottom: 1.5rem;
+        }
+
+        .stat {
+            Background: var(--bg);
+            Padding: 1rem;
+            Border-radius: 12px;
+            Border: 1px solid var(--border);
+        }
+
+        .stat-label {
+            Font-size: 0.75rem;
+            Color: var(--text-muted);
+            Text-transform: uppercase;
+            Letter-spacing: 0.05em;
+            Margin-bottom: 0.25rem;
+        }
+
+        .stat-value {
+            Font-size: 1.125rem;
+            Font-weight: 700;
+            Color: var(--accent);
+        }
+
+        .description {
+            Color: var(--text-muted);
+            Margin-bottom: 1.5rem;
+            Line-height: 1.7;
+        }
+
+        .features-list {
+            List-style: none;
+        }
+
+        .features-list li {
+            Padding: 0.75rem 0;
+            Padding-left: 1.5rem;
+            Position: relative;
+            Border-bottom: 1px solid var(--border);
+            Font-size: 0.9375rem;
+        }
+
+        .features-list li:last-child {
+            Border-bottom: none;
+        }
+
+        .features-list li::before {
+            Content: ‘→’;
+            Position: absolute;
+            Left: 0;
+            Color: var(--accent);
+            Font-weight: 700;
+        }
+
+        .difficulty-badge {
+            Display: inline-flex;
+            Align-items: center;
+            Gap: 0.5rem;
+            Margin-top: 1rem;
+            Padding: 0.5rem 1rem;
+            Background: var(--bg);
+            Border-radius: 9999px;
+            Font-size: 0.875rem;
+            Border: 1px solid var(--border);
+        }
+
+        .difficulty-dots {
+            Display: flex;
+            Gap: 0.25rem;
+        }
+
+        .dot {
+            Width: 6px;
+            Height: 6px;
+            Border-radius: 50%;
+            Background: var(--surface-light);
+        }
+
+        .dot.active {
+            Background: var(--success);
+        }
+
+        .dot.active.hard {
+            Background: var(--warning);
+        }
+
+        /* Accordion for Mobile Details */
+        .accordion {
+            Margin-top: 1rem;
+        }
+
+        .accordion-item {
+            Border: 1px solid var(--border);
+            Border-radius: 12px;
+            Margin-bottom: 0.5rem;
+            Overflow: hidden;
+        }
+
+        .accordion-header {
+            Width: 100%;
+            Padding: 1rem;
+            Background: var(--surface);
+            Border: none;
+            Color: var(--text);
+            Text-align: left;
+            Font-weight: 600;
+            Cursor: pointer;
+            Display: flex;
+            Justify-content: space-between;
+            Align-items: center;
+        }
+
+        .accordion-header::after {
+            Content: ‘+’;
+            Font-size: 1.5rem;
+            Color: var(--accent);
+            Transition: transform 0.3s;
+        }
+
+        .accordion-item.active .accordion-header::after {
+            Transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            Max-height: 0;
+            Overflow: hidden;
+            Transition: max-height 0.3s ease-out;
+            Background: var(--bg);
+        }
+
+        .accordion-item.active .accordion-content {
+            Max-height: 500px;
+        }
+
+        .accordion-body {
+            Padding: 1rem;
+            Color: var(--text-muted);
+            Font-size: 0.9375rem;
+        }
+
+        /* Desktop Grid Layout */
+        @media (min-width: 768px) {
+            .nav-links {
+                Display: flex;
+                Gap: 2rem;
+                List-style: none;
+            }
+
+            .nav-links a {
+                Color: var(--text-muted);
+                Text-decoration: none;
+                Font-weight: 500;
+                Transition: color 0.2s;
+            }
+
+            .nav-links a:hover {
+                Color: var(--accent);
+            }
+
+            .menu-toggle {
+                Display: none;
+            }
+
+            .mobile-scroll-container {
+                Display: grid;
+                Grid-template-columns: repeat(2, 1fr);
+                Gap: 1.5rem;
+                Overflow-x: visible;
+                Padding: 2rem;
+            }
+
+            .debate-card {
+                Min-width: auto;
+                Max-width: none;
+            }
+
+            .hero h1 {
+                Font-size: 3.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-scroll-container {
+                Grid-template-columns: repeat(3, 1fr);
+                Max-width: 1200px;
+                Margin: 0 auto;
+            }
+        }
+
+        /* Scroll Indicators */
+        .scroll-hint {
+            Text-align: center;
+            Color: var(--text-muted);
+            Font-size: 0.875rem;
+            Margin-top: 1rem;
+            Display: flex;
+            Align-items: center;
+            Justify-content: center;
+            Gap: 0.5rem;
+        }
+
+        .scroll-hint::before,
+        .scroll-hint::after {
+            Content: ‘←’;
+            Animation: swipe 1.5s infinite;
+        }
+
+        .scroll-hint::after {
+            Content: ‘→’;
+        }
+
+        @keyframes swipe {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @media (min-width: 768px) {
+            .scroll-hint {
+                Display: none;
+            }
+        }
+
+        /* Comparison Section */
+        .comparison {
+            Padding: 4rem 1.5rem;
+            Background: var(--surface);
+            Margin-top: 2rem;
+        }
+
+        .section-title {
+            Text-align: center;
+            Font-size: 2rem;
+            Margin-bottom: 2rem;
+        }
+
+        .table-wrapper {
+            Overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            Border-radius: 12px;
+            Border: 1px solid var(--border);
+        }
+
+        Table {
+            Width: 100%;
+            Min-width: 700px;
+            Border-collapse: collapse;
+            Font-size: 0.9375rem;
+        }
+
+        Th {
+            Background: var(--bg);
+            Padding: 1rem;
+            Text-align: left;
+            Font-weight: 600;
+            Color: var(--accent);
+            Border-bottom: 2px solid var(--border);
+        }
+
+        Td {
+            Padding: 1rem;
+            Border-bottom: 1px solid var(--border);
+            Color: var(--text-muted);
+        }
+
+        Tr:hover td {
+            Color: var(--text);
+            Background: rgba(56, 189, 248, 0.05);
+        }
+
+        /* CTA Section */
+        .cta {
+            Padding: 4rem 1.5rem;
+            Text-align: center;
+            Background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
+            Margin: 2rem;
+            Border-radius: 24px;
+            Border: 1px solid var(--border);
+        }
+
+        .cta h2 {
+            Font-size: 2rem;
+            Margin-bottom: 1rem;
+        }
+
+        .cta p {
+            Color: var(--text-muted);
+            Margin-bottom: 2rem;
+            Max-width: 600px;
+            Margin-left: auto;
+            Margin-right: auto;
+        }
+
+        .btn {
+            Display: inline-block;
+            Padding: 1rem 2.5rem;
+            Background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            Color: var(--bg);
+            Text-decoration: none;
+            Border-radius: 9999px;
+            Font-weight: 700;
+            Transition: transform 0.2s, box-shadow 0.2s;
+            Border: none;
+            Cursor: pointer;
+            Font-size: 1rem;
+        }
+
+        .btn:hover {
+            Transform: translateY(-2px);
+            Box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+        }
+
+        Footer {
+            Text-align: center;
+            Padding: 2rem;
+            Color: var(--text-muted);
+            Border-top: 1px solid var(--border);
+            Margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class=”nav-container”>
+            <div class=”brand”>DEBATING COUNCIL</div>
+            <ul class=”nav-links”>
+                <li><a href=”#home”>Home</a></li>
+                <li><a href=”#formats” style="color: var(--accent)">Formats</a></li>
+                <li><a href=”#training”>Training</a></li>
+                <li><a href=”#tournaments”>Tournaments</a></li>
+            </ul>
+            <button class=”menu-toggle”>☰</button>
+        </div>
+    </nav>
+
+    <section class=”hero”>
+        <div class=”hero-content”>
+            <h1>Debate Formats</h1>
+            <p>Master the art of argumentation across different styles. From impromptu parliamentary to prepared policy debates.</p>
+            
+            <div class=”filter-tabs”>
+                <button class=”tab active”>All Formats</button>
+                <button class=”tab”>Beginner</button>
+                <button class=”tab”>Advanced</button>
+                <button class=”tab”>Team</button>
+                <button class=”tab”>Individual</button>
+            </div>
+        </div>
+    </section>
+
+    <div class=”scroll-hint”>Swipe to explore formats</div>
+
+    <div class=”mobile-scroll-container”>
+        <!—British Parliamentary 
+        <article class=”debate-card”>
+            <div class=”card-header”>
+                <span class=”format-tag”>WUDC Style</span>
+                <h2>British Parliamentary</h2>
+                <div class=”subtitle”>The international gold standard</div>
+            </div>
+            <div class=”card-body”>
+                <div class=”stats-grid”>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Teams</div>
+                        <div class=”stat-value”>4 × 2</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Prep Time</div>
+                        <div class=”stat-value”>15m</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Speech</div>
+                        <div class=”stat-value”>7 min</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Motion</div>
+                        <div class=”stat-value”>Impromptu</div>
+                    </div>
+                </div>
+                
+                <p class=”description”>
+                    Four teams compete in a pie chart structure: Opening Government, Opening Opposition, Closing Government, and Closing Opposition.
+                </p>
+
+                <div class=”accordion”>
+                    <div class=”accordion-item”>
+                        <button class=”accordion-header”>Key Rules</button>
+                        <div class=”accordion-content”>
+                            <div class=”accordion-body”>
+                                Points of Information (POIs) allowed between 1st and 6th minute. Teams must extend arguments, not merely repeat them. Ranking system from 1st to 4th place.
+                            </div>
+                        </div>
+                    </div>
+                    <div class=”accordion-item”>
+                        <button class=”accordion-header”>Strategy Tips</button>
+                        <div class=”accordion-content”>
+                            <div class=”accordion-body”>
+                                Opening teams should set up clear definitions and arguments. Closing teams must provide meaningful extensions or refinements while attacking other team’s case.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=”difficulty-badge”>
+                    <span>Difficulty:</span>
+                    <div class=”difficulty-dots”>
+                        <div class=”dot active hard”></div>
+                        <div class=”dot active hard”></div>
+                        <div class=”dot active hard”></div>
+                        <div class=”dot active”></div>
+                        <div class=”dot”></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!—Lincoln-Douglas 
+        <article class=”debate-card”>
+            <div class=”card-header”>
+                <span class=”format-tag” style="background: rgba(251, 191, 36, 0.1); color: var(--warning)">Value Debate</span>
+                <h2>Lincoln-Douglas</h2>
+                <div class=”subtitle”>Philosophical one-on-one</div>
+            </div>
+            <div class=”card-body”>
+                <div class=”stats-grid”>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Format</div>
+                        <div class=”stat-value”>1 vs 1</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Round Time</div>
+                        <div class=”stat-value”>40m</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Topic</div>
+                        <div class=”stat-value”>2 Months</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Focus</div>
+                        <div class=”stat-value”>Ethics</div>
+                    </div>
+                </div>
+                
+                <p class=”description”>
+                    Emphasizes moral philosophy, logic, and value systems. Debaters clash over competing ethical frameworks rather than just policy mechanisms.
+                </p>
+
+                <div class=”accordion”>
+                    <div class=”accordion-item”>
+                        <button class=”accordion-header”>Structure</button>
+                        <div class=”accordion-content”>
+                            <div class=”accordion-body”>
+                                AC (6m), Cross-X (3m), NC (7m), Cross-X (3m), 1AR (4m), NR (6m), 2AR (3m). Heavy focus on Value and Value Criterion clash.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=”difficulty-badge”>
+                    <span>Difficulty:</span>
+                    <div class=”difficulty-dots”>
+                        <div class=”dot active”></div>
+                        <div class=”dot active”></div>
+                        <div class=”dot active”></div>
+                        <div class=”dot active”></div>
+                        <div class=”dot active”></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!—Public Forum 
+        <article class=”debate-card”>
+            <div class=”card-header”>
+                <span class=”format-tag” style="background: rgba(52, 211, 153, 0.1); color: var(--success)">Accessible</span>
+                <h2>Public Forum</h2>
+                <div class=”subtitle”>Current events for everyone</div>
+            </div>
+            <div class=”card-body”>
+                <div class=”stats-grid”>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Teams</div>
+                        <div class=”stat-value”>2 × 2</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Topic</div>
+                        <div class=”stat-value”>Monthly</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Speech</div>
+                        <div class=”stat-value”>4 min</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Use of</div>
+                        <div class=”stat-value”>Evidence</div>
+                    </div>
+                </div>
+                
+                <p class=”description”>
+                    Designed to be understandable to lay audiences. Topics change monthly and focus on current events news stories.
+                </p>
+
+                <ul class=”features-list”>
+                    <li>Coin flip determines pro/con</li>
+                    <li>Grand Crossfire debate</li>
+                    <li>Summary and Final Focus speeches</li>
+                    <li>Evidence-based but accessible</li>
+                </ul>
+
+                <div class=”difficulty-badge”>
+                    <span>Difficulty:</span>
+                    <div class=”difficulty-dots”>
+                        <div class=”dot active”></div>
+                        <div class=”dot active”></div>
+                        <div class=”dot active”></div>
+                        <div class=”dot”></div>
+                        <div class=”dot”></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!—Policy 
+        <article class=”debate-card”>
+            <div class=”card-header”>
+                <span class=”format-tag” style="background: rgba(232, 121, 249, 0.1); color: #e879f9">CX Debate</span>
+                <h2>Policy Debate</h2>
+                <div class=”subtitle”>The research intensive</div>
+            </div>
+            <div class=”card-body”>
+                <div class=”stats-grid”>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Speed</div>
+                        <div class=”stat-value”>High</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Research</div>
+                        <div class=”stat-value”>Yearly</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Speeches</div>
+                        <div class=”stat-value”>8-9m</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Focus</div>
+                        <div class=”stat-value”>Plan</div>
+                    </div>
+                </div>
+                
+                <p class=”description”>
+                    The oldest format. Affirmative presents a specific policy plan; Negative argues against it using disadvantages, counterplans, or kritiks.
+                </p>
+
+                <div class=”accordion”>
+                    <div class=”accordion-item”>
+                        <button class=”accordion-header”>Advanced Strategies</button>
+                        <div class=”accordion-content”>
+                            <div class=”accordion-body”>
+                                Includes Kritiks (challenging underlying assumptions), Counterplans (alternative policies), and T debates (Topicality). Extremely evidence-heavy with “cards” reading.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=”difficulty-badge”>
+                    <span>Difficulty:</span>
+                    <div class=”difficulty-dots”>
+                        <div class=”dot active hard”></div>
+                        <div class=”dot active hard”></div>
+                        <div class=”dot active hard”></div>
+                        <div class=”dot active hard”></div>
+                        <div class=”dot active hard”></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!—World Schools 
+        <article class=”debate-card”>
+            <div class=”card-header”>
+                <span class=”format-tag” style="background: rgba(248, 113, 113, 0.1); color: #f87171">WSDC</span>
+                <h2>World Schools</h2>
+                <div class=”subtitle”>National team format</div>
+            </div>
+            <div class=”card-body”>
+                <div class=”stats-grid”>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Teams</div>
+                        <div class=”stat-value”>3 vs 3</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Motions</div>
+                        <div class=”stat-value”>Mixed</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Speech</div>
+                        <div class=”stat-value”>8m</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Reply</div>
+                        <div class=”stat-value”>4m</div>
+                    </div>
+                </div>
+                
+                <p class=”description”>
+                    Used in World Schools Debating Championships. Features both prepared and impromptu motions with three speakers per side.
+                </p>
+
+                <ul class=”features-list”>
+                    <li>Reply speeches (4th speeches)</li>
+                    <li>Points of Information</li>
+                    <li>Prepared and impromptu rounds</li>
+                    <li>Emphasis on teamwork</li>
+                </ul>
+
+                <div class=”difficulty-badge”>
+                    <span>Difficulty:</span>
+                    <div class=”difficulty-dots”>
+                        <div class=”dot active”></div>
+                        <div class=”dot active”></div>
+                        <div class=”dot active”></div>
+                        <div class=”dot active”></div>
+                        <div class=”dot”></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!—Congressional 
+        <article class=”debate-card”>
+            <div class=”card-header”>
+                <span class=”format-tag” style="background: rgba(167, 139, 250, 0.1); color: #a78bfa">Legislative</span>
+                <h2>Congressional</h2>
+                <div class="subtitle">Model legislation</div>
+            </div>
+            <div class=”card-body”>
+                <div class=”stats-grid”>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Chamber</div>
+                        <div class=”stat-value”>10-20</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Speech</div>
+                        <div class=”stat-value”>3m</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Question</div>
+                        <div class=”stat-value”>1m</div>
+                    </div>
+                    <div class=”stat”>
+                        <div class=”stat-label”>Type</div>
+                        <div class=”stat-value”>Bill</div>
+                    </div>
+                </div>
+                
+                <p class=”description”>
+                    Simulates legislative sessions. Students debate legislation, offer amendments, and vote as a chamber with a presiding officer.
+                </p>
+
+                <ul class=”features-list”>
+                    <li>Author/sponsor speeches</li>
+                    <li>Pro and Con debate</li>
+                    <li>Amendment process</li>
+                    <li>Parliamentary procedure</li>
+                </ul>
+
+                <div class=”difficulty-badge”>
+                    <span>Difficulty:</span>
+                    <div class=”difficulty-dots”>
+                        <div class=”dot active”></div>
+                        <div class=”dot active”></div>
+                        <div class=”dot active”></div>
+                        <div class=”dot”></div>
+                        <div class=”dot”></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <section class=”comparison”>
+        <h2 class=”section-title”>Format Comparison</h2>
+        <div class=”table-wrapper”>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Format</th>
+                        <th>Speakers</th>
+                        <th>Preparation</th>
+                        <th>Speed</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>British Parliamentary</strong></td>
+                        <td>8 (4 teams)</td>
+                        <td>15 minutes</td>
+                        <td>Moderate</td>
+                        <td>Quick thinking</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lincoln-Douglas</strong></td>
+                        <td>2 individuals</td>
+                        <td>2 months</td>
+                        <td>Conversational</td>
+                        <td>Philosophy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Public Forum</strong></td>
+                        <td>4 (2 teams)</td>
+                        <td>1 month</td>
+                        <td>Conversational</td>
+                        <td>Beginners</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Policy</strong></td>
+                        <td>4 (2 teams)</td>
+                        <td>Year-round</td>
+                        <td>Very Fast</td>
+                        <td>Research</td>
+                    </tr>
+                    <tr>
+                        <td><strong>World Schools</strong></td>
+                        <td>6 (2 teams)</td>
+                        <td>30-60 min</td>
+                        <td>Moderate</td>
+                        <td>Teamwork</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Congressional</strong></td>
+                        <td>Chamber (10-20)</td>
+                        <td>Session prep</td>
+                        <td>Moderate</td>
+                        <td>Politics</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class=”cta”>
+        <h2>Find Your Format</h2>
+        <p>Not sure which style suits you? Attend our introductory workshop where you can try each format with coaching feedback.</p>
+        <a href=”#” class=”btn”>Register for Workshop</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Debating Council. Master the art of persuasion.</p>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        Document.querySelectorAll(accordion-header).forEach(button => {
+            Button.addEventListener(click, () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains(active);
+                
+                // Close all others
+                Document.querySelectorAll(accordion-item).forEach(i => {
+                    i.classList.remove(active);
+                });
+                
+                // Toggle current
+                If (!isActive) 
+                    Item.classList.add (active);
+                
+            });
+        });
+
+        // Tab filtering (visual only for demo)
+        Document.querySelectorAll(tab).forEach(tab => {
+            Tab.addEventListener(click, () => {
+                Document.querySelectorAll(tab).forEach(t => t.classList.remove(active));
+                Tab.classList.add(active);
+            });
+        });
+
+        // Smooth scroll behavior for mobile scroll container
+        const scrollContainer = document.querySelector(mobile-scroll-container);
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener(mousedown, (e) => {
+            isDown = true;
+            startX = e.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+        });
+
+        scrollContainer.addEventListener(mouseleave, () => {
+            isDown = false;
+        });
+
+        scrollContainer.addEventListener(mouseup, () => {
+            isDown = false;
+        });
+
+        scrollContainer.addEventListener(mousemove, (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
+

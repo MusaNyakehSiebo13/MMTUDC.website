@@ -1,0 +1,1175 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Meet the diverse community of Rhetoric Apex - Executive board, debaters, coaches, and alumni.">
+    <title>Our Members - Milton Margai University - Debating Council</title>
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --primary: rgb(69, 79, 168);
+            --secondary: #ffffff;
+            --accent: #ffd9004d;
+            --text: #ffffff;
+            --card-bg: rgba(0, 0, 0, 0.596);
+            --glass: rgba(0, 60, 255, 0.877);
+            --mobile-menu: #020c1b;
+            --gold: #ffffff;
+            --silver: #ffbb00;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #000000a8 100%);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 234, 43, 0.87);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 5px 30px rgba(255, 196, 0, 0.418);
+            padding: 0.5rem 5%;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* ===== PHOTO LOGO ===== */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            z-index: 1001;
+            height: 50px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        nav.scrolled .logo img {
+            height: 35px;
+        }
+
+        @media (max-width: 768px) {
+            .logo img {
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 30px;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--mobile-menu);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: right 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            z-index: 999;
+            padding: 6rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.349);
+            border-left: 1px solid rgba(0, 17, 255, 0.548);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(100, 255, 218, 0.1);
+            border-left: 3px solid var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .members-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 100px 5% 60px;
+            text-align: center;
+            background: linear-gradient(rgba(36, 54, 207, 0.9), rgba(2, 12, 27, 0.95));
+        }
+
+        .members-hero-content {
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .members-hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .members-hero .tagline {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        /* ===== FILTER TABS ===== */
+        .filter-container {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: -30px auto 3rem;
+            max-width: 800px;
+            border: 1px solid rgba(17, 0, 255, 0.89);
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 1px solid rgba(0, 17, 255, 0.596);
+            color: var(--text);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: var(--secondary);
+            color: var(--primary);
+            border-color: var(--secondary);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            margin-top: 0.5rem;
+            border-radius: 2px;
+        }
+
+        .member-count {
+            background: rgba(0, 0, 0, 0.678);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgb(15, 31, 255);
+        }
+
+        /* ===== EXECUTIVE BOARD ===== */
+        .executive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .executive-card {
+            background: var(--card-bg);
+            border: 1px solid rgb(0, 17, 255);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .executive-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .executive-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 219, 18, 0.274);
+            border-color: var(--secondary);
+        }
+
+        .exec-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 47, 255, 0.603);
+            color: var(--gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.87);
+        }
+
+        .exec-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            border: 4px solid rgba(0, 17, 252, 0.5);
+        }
+
+        .exec-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .exec-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .exec-bio {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .exec-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgb(2, 6, 255);
+        }
+
+        /* ===== MEMBERS GRID ===== */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .member-card {
+            background: var(--card-bg);
+            border: 1px solid rgb(0, 17, 255);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.959);
+            border-color: var(--secondary);
+        }
+
+        .member-card.hidden {
+            display: none;
+        }
+
+        .member-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .member-avatar-small {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .member-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .member-info .role {
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .member-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(0, 0, 0, 0.623);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(0, 34, 228, 0.671);
+        }
+
+        /* ===== ALUMNI SECTION ===== */
+        .alumni-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 4rem;
+            border: 1px solid rgba(9, 14, 255, 0.753);
+        }
+
+        .alumni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .alumni-card {
+            background: rgba(25, 46, 230, 0.603);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 3px solid var(--gold);
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+
+        .alumni-card:hover {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .alumni-year {
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.699);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid var(--secondary);
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(11, 35, 255, 0.808);
+        }
+
+        .modal-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 174, 0, 0.658);
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .members-hero {
+                padding: 100px 4% 40px;
+                min-height: 50vh;
+            }
+
+            .members-hero h1 {
+                font-size: 2rem;
+            }
+
+            .filter-container {
+                margin: -20px 1rem 2rem;
+                padding: 1rem;
+            }
+
+            .filter-tabs {
+                gap: 0.5rem;
+            }
+
+            .filter-tab {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .executive-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .executive-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .exec-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+
+            .members-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .alumni-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .alumni-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .exec-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .executive-card:hover,
+            .member-card:hover,
+            .alumni-card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="" class="logo">
+                <img src="MMTU Logo.jpg" alt="Milton Margai - Debating Council">
+               
+            </a>
+             
+            
+            <ul class="nav-links">
+                <li><a href="MMTU DEBATING COUNCLE.HTML">Home</a></li>
+                <li><a href="Debates.html">Debates</a></li>
+                <li><a href="members.html" class="active">Members</a></li>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="MMTU DEBATING COUNCLE.HTML" onclick="closeMobileMenu()">Home</a>
+            <a href="Debates.html" onclick="closeMobileMenu()">Debates</a>
+            <a href="Members.html" onclick="closeMobileMenu()">Members</a>
+            <a href="Contact Us.html" onclick="closeMobileMenu()">ContactUs</a>
+        </div>
+        <div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="members-hero">
+        <div class="members-hero-content">
+            <h1>Our Community</h1>
+            <p class="tagline">Meet the diverse minds that make Rhetoric Apex extraordinary. From seasoned champions to rising stars, every voice matters.</p>
+        </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <div class="filter-container">
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All Members</button>
+            <button class="filter-tab" data-filter="executive">Executive Board</button>
+            <button class="filter-tab" data-filter="senior">Senior Debaters</button>
+            <button class="filter-tab" data-filter="junior">Junior Debaters</button>
+            <button class="filter-tab" data-filter="coach">Coaches</button>
+        </div>
+    </div>
+
+    <!-- Executive Board Section -->
+    <section id="executive">
+        <div class="section-header">
+            <h2 class="section-title">Executive Board</h2>
+            <span class="member-count">4 Members</span>
+        </div>
+        
+        <div class="executive-grid">
+            <div class="executive-card" data-category="executive" onclick="openModal('Alex Johnson', 'President', '3x National Champion with expertise in policy debate and strategic argumentation. Alex has led the council to 12 international victories and specializes in economic and foreign policy topics.', 'AJ', 47, 12)">
+                <span class="exec-badge">PRESIDENT</span>
+                <div class="exec-avatar">AJ</div>
+                <h3 class="exec-name">Alex Johnson</h3>
+                <p class="exec-role">Strategic Leader</p>
+                <p class="exec-bio">3x National Champion specializing in policy debates and strategic argumentation. Led our team to 12 international tournament victories.</p>
+                <div class="exec-stats">
+                    <div class="stat">
+                        <span class="stat-number">47</span>
+                        <span class="stat-label">Wins</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Tournaments</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="executive-card" data-category="executive" onclick="openModal('Sarah Martinez', 'Vice President', 'Philosophy expert with a focus on logical frameworks and ethical debates. Sarah has mentored over 20 new members and designed our comprehensive training curriculum.', 'SM', 52, 15)">
+                <span class="exec-badge">VP</span>
+                <div class="exec-avatar">SM</div>
+                <h3 class="exec-name">Sarah Martinez</h3>
+                <p class="exec-role">Operations Lead</p>
+                <p class="exec-bio">Philosophy expert with a focus on logical frameworks. Mentored 20+ new members and designed our training curriculum.</p>
+                <div class="exec-stats">
+                    <div class="stat">
+                        <span class="stat-number">52</span>
+                        <span class="stat-label">Wins</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">Tournaments</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="executive-card" data-category="executive" onclick="openModal('David Kim', 'Treasurer', 'Master of rebuttals and cross-examination tactics. David is known for turning debates in the final moments with his sharp wit and thorough research.', 'DK', 39, 10)">
+                <span class="exec-badge">TREASURER</span>
+                <div class="exec-avatar">DK</div>
+                <h3 class="exec-name">David Kim</h3>
+                <p class="exec-role">Finance & Strategy</p>
+                <p class="exec-bio">Master of rebuttals and cross-examination tactics. Known for turning debates in the final moments.</p>
+                <div class="exec-stats">
+                    <div class="stat">
+                        <span class="stat-number">39</span>
+                        <span class="stat-label">Wins</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">10</span>
+                        <span class="stat-label">Tournaments</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="executive-card" data-category="executive" onclick="openModal('Lisa Chen', 'Secretary', 'Specializes in public forum and spontaneous debates. Lisa manages our recruitment and ensures new members feel welcomed and supported.', 'LC', 44, 11)">
+                <span class="exec-badge">SECRETARY</span>
+                <div class="exec-avatar">LC</div>
+                <h3 class="exec-name">Lisa Chen</h3>
+                <p class="exec-role">Recruitment Lead</p>
+                <p class="exec-bio">Specializes in public forum and spontaneous debates. Our go-to expert for adapting to any topic on the fly.</p>
+                <div class="exec-stats">
+                    <div class="stat">
+                        <span class="stat-number">44</span>
+                        <span class="stat-label">Wins</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">11</span>
+                        <span class="stat-label">Tournaments</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Members Grid -->
+    <section id="members">
+        <div class="section-header">
+            <h2 class="section-title">Active Debaters</h2>
+            <span class="member-count">8 Members</span>
+        </div>
+
+        <div class="members-grid">
+            <div class="member-card" data-category="senior" onclick="openModal('Ryan Torres', 'Senior Debater', 'Fast learner with a knack for research. Ryan is known for finding obscure but powerful evidence to support arguments in technology and science debates.', 'RT', 28, 8)">
+                <div class="member-header">
+                    <div class="member-avatar-small">RT</div>
+                    <div class="member-info">
+                        <h3>Ryan Torres</h3>
+                        <span class="role">Senior Debater</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; opacity: 0.9; line-height: 1.5;">Expert in tech policy and scientific argumentation. Known for deep research capabilities.</p>
+                <div class="member-tags">
+                    <span class="tag">Technology</span>
+                    <span class="tag">Research</span>
+                </div>
+            </div>
+
+            <div class="member-card" data-category="senior" onclick="openModal('Zoe Nguyen', 'Senior Debater', 'Rising star in ethical debates. Zoe brings unique perspectives on moral philosophy and social justice issues, often challenging conventional wisdom.', 'ZN', 31, 7)">
+                <div class="member-header">
+                    <div class="member-avatar-small">ZN</div>
+                    <div class="member-info">
+                        <h3>Zoe Nguyen</h3>
+                        <span class="role">Senior Debater</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; opacity: 0.9; line-height: 1.5;">Philosophy enthusiast specializing in ethics and social justice argumentation.</p>
+                <div class="member-tags">
+                    <span class="tag">Ethics</span>
+                    <span class="tag">Philosophy</span>
+                </div>
+            </div>
+
+            <div class="member-card" data-category="coach" onclick="openModal('Dr. James Wilson', 'Head Coach', 'Former national champion with 15 years of coaching experience. Dr. Wilson specializes in rhetoric analysis and persuasive speaking techniques.', 'JW', 0, 20)">
+                <div class="member-header">
+                    <div class="member-avatar-small">JW</div>
+                    <div class="member-info">
+                        <h3>Dr. James Wilson</h3>
+                        <span class="role">Head Coach</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; opacity: 0.9; line-height: 1.5;">15 years coaching experience. Specializes in rhetoric and persuasive speaking.</p>
+                <div class="member-tags">
+                    <span class="tag">Coach</span>
+                    <span class="tag">Mentor</span>
+                </div>
+            </div>
+
+            <div class="member-card" data-category="junior" onclick="openModal('Maya Patel', 'Junior Debater', 'Newcomer with incredible potential. Maya has shown remarkable growth in impromptu speaking and is quickly mastering the art of rebuttal.', 'MP', 8, 4)">
+                <div class="member-header">
+                    <div class="member-avatar-small">MP</div>
+                    <div class="member-info">
+                        <h3>Maya Patel</h3>
+                        <span class="role">Junior Debater</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; opacity: 0.9; line-height: 1.5;">Rising talent in impromptu debates. Shows remarkable growth and adaptability.</p>
+                <div class="member-tags">
+                    <span class="tag">Impromptu</span>
+                    <span class="tag">Rising Star</span>
+                </div>
+            </div>
+
+            <div class="member-card" data-category="junior" onclick="openModal('Jake Williams', 'Junior Debater', 'Tech-savvy debater specializing in AI and futurism topics. Jake combines his computer science background with sharp rhetorical skills.', 'JW', 12, 5)">
+                <div class="member-header">
+                    <div class="member-avatar-small">JW</div>
+                    <div class="member-info">
+                        <h3>Jake Williams</h3>
+                        <span class="role">Junior Debater</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; opacity: 0.9; line-height: 1.5;">CS student specializing in AI ethics and futurism debates. Tech-focused approach.</p>
+                <div class="member-tags">
+                    <span class="tag">AI & Tech</span>
+                    <span class="tag">Future Studies</span>
+                </div>
+            </div>
+
+            <div class="member-card" data-category="senior" onclick="openModal('Emma Thompson', 'Senior Debater', 'Environmental policy expert. Emma brings scientific data and passionate advocacy to climate change debates, making complex topics accessible.', 'ET', 35, 9)">
+                <div class="member-header">
+                    <div class="member-avatar-small">ET</div>
+                    <div class="member-info">
+                        <h3>Emma Thompson</h3>
+                        <span class="role">Senior Debater</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; opacity: 0.9; line-height: 1.5;">Environmental policy expert. Makes complex climate data accessible and compelling.</p>
+                <div class="member-tags">
+                    <span class="tag">Environment</span>
+                    <span class="tag">Policy</span>
+                </div>
+            </div>
+
+            <div class="member-card" data-category="coach" onclick="openModal('Maria Garcia', 'Assistant Coach', 'Specializes in Lincoln-Douglas debate format. Maria helps students develop philosophical frameworks and value-based argumentation.', 'MG', 0, 8)">
+                <div class="member-header">
+                    <div class="member-avatar-small">MG</div>
+                    <div class="member-info">
+                        <h3>Maria Garcia</h3>
+                        <span class="role">Assistant Coach</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; opacity: 0.9; line-height: 1.5;">LD format specialist. Focuses on philosophical frameworks and value debates.</p>
+                <div class="member-tags">
+                    <span class="tag">LD Format</span>
+                    <span class="tag">Philosophy</span>
+                </div>
+            </div>
+
+            <div class="member-card" data-category="junior" onclick="openModal('Lucas Brown', 'Junior Debater', 'Economics enthusiast with a talent for statistical analysis. Lucas excels at dissecting economic policies and presenting data-driven arguments.', 'LB', 15, 6)">
+                <div class="member-header">
+                    <div class="member-avatar-small">LB</div>
+                    <div class="member-info">
+                        <h3>Lucas Brown</h3>
+                        <span class="role">Junior Debater</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; opacity: 0.9; line-height: 1.5;">Economics focus with strong statistical analysis skills. Data-driven debater.</p>
+                <div class="member-tags">
+                    <span class="tag">Economics</span>
+                    <span class="tag">Statistics</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alumni Section -->
+    <section class="alumni-section">
+        <div class="section-header">
+            <h2 class="section-title">Distinguished Alumni</h2>
+            <span class="member-count">Legacy Members</span>
+        </div>
+        <p style="text-align: center; opacity: 0.9; margin-bottom: 2rem;">Former members who have gone on to make significant impacts in law, politics, academia, and business.</p>
+        
+        <div class="alumni-grid">
+            <div class="alumni-card">
+                <div class="alumni-year">Class of 2020</div>
+                <h3>Christopher Lee</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Now pursuing Law at Harvard University</p>
+            </div>
+            <div class="alumni-card">
+                <div class="alumni-year">Class of 2019</div>
+                <h3>Amanda Foster</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Policy Advisor at United Nations</p>
+            </div>
+            <div class="alumni-card">
+                <div class="alumni-year">Class of 2018</div>
+                <h3>Michael Chang</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Tech Entrepreneur & Public Speaker</p>
+            </div>
+            <div class="alumni-card">
+                <div class="alumni-year">Class of 2021</div>
+                <h3>Sophia Anderson</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Political Science Professor at Yale</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Modal -->
+    <div class="modal" id="memberModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-avatar" id="modalAvatar">AJ</div>
+            <h2 id="modalName" style="text-align: center; margin-bottom: 0.5rem;">Alex Johnson</h2>
+            <p id="modalRole" style="text-align: center; color: var(--secondary); margin-bottom: 1rem; font-weight: 600;">President</p>
+            <p id="modalBio" style="line-height: 1.6; margin-bottom: 1.5rem;">Bio text here...</p>
+            <div style="display: flex; justify-content: space-around; padding-top: 1rem; border-top: 1px solid rgba(100, 255, 218, 0.1);">
+                <div class="stat">
+                    <span class="stat-number" id="modalWins">47</span>
+                    <span class="stat-label">Wins</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="modalTournaments">12</span>
+                    <span class="stat-label">Tournaments</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Rhetoric Apex Debating Council. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" title="Discord">💬</a>
+            <a href="#" title="YouTube">▶️</a>
+            <a href="#" title="Twitter">🐦</a>
+            <a href="#" title="Email">✉️</a>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMobileMenu() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        }
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+
+        hamburger.addEventListener('click', toggleMobileMenu);
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Filter Tabs
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const memberCards = document.querySelectorAll('.member-card, .executive-card');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const filter = tab.dataset.filter;
+
+                // Filter cards
+                memberCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 10);
+                    } else {
+                        if (card.dataset.category === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => card.style.opacity = '1', 10);
+                        } else {
+                            card.style.opacity = '0';
+                            setTimeout(() => card.style.display = 'none', 300);
+                        }
+                    }
+                });
+            });
+        });
+
+        // Modal Functions
+        function openModal(name, role, bio, initials, wins, tournaments) {
+            document.getElementById('modalName').textContent = name;
+            document.getElementById('modalRole').textContent = role;
+            document.getElementById('modalBio').textContent = bio;
+            document.getElementById('modalAvatar').textContent = initials;
+            document.getElementById('modalWins').textContent = wins;
+            document.getElementById('modalTournaments').textContent = tournaments;
+            document.getElementById('memberModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (!event || event.target === document.getElementById('memberModal') || event.target.classList.contains('modal-close')) {
+                document.getElementById('memberModal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+

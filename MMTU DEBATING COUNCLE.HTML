@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Milton Margai University - Debating Council</title>
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --primary: #14233a;
+            --secondary: #f5f5f8;
+            --accent: #ffc421b6;
+            --text: #e6f1ff;
+            --card-bg: rgba(13, 100, 250, 0.637);
+            --glass: rgba(8, 8, 255, 0.521);
+            --mobile-menu: #000000c7;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #020c1b 100%);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== PARTICLE BACKGROUND ===== */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 227, 100, 0.836);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 5px 30px rgba(248, 252, 33, 0.466);
+            padding: 0.8rem 5%;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 1001;
+        }
+
+		.logo img{
+
+			height: 40px;
+			width: auto;
+			display: block;
+			max-width: 200px;
+			object-fit: contain;
+		}
+
+        /* Desktop Navigation */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--mobile-menu);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: right 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            z-index: 999;
+            padding: 6rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: -5px 0 30px rgba(248, 248, 248, 0.144);
+            border-left: 1px solid rgba(255, 227, 100, 0.452);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(100, 255, 218, 0.1);
+            border-left: 3px solid var(--secondary);
+            transform: translateX(5px);
+        }
+
+        /* Overlay for mobile menu */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+            line-height: 1.1;
+        }
+
+        .hero .tagline {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+            line-height: 1.4;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 222, 75, 0.767);
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* ===== DEBATE TOPICS ===== */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .topic-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.897);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--secondary);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .topic-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 250, 183, 0.349);
+            border-color: var(--secondary);
+        }
+
+        .topic-status {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .status-upcoming {
+            background: rgba(100, 255, 218, 0.2);
+            color: var(--secondary);
+        }
+
+        .status-live {
+            background: rgba(255, 107, 107, 0.2);
+            color: var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        .topic-motion {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .topic-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        /* ===== MEMBER SHOWCASE ===== */
+        .member-carousel {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0 2rem;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary) transparent;
+        }
+
+        .member-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .member-carousel::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+
+        .member-card {
+            min-width: 280px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.342);
+        }
+
+        .member-card:hover {
+            transform: scale(1.05);
+            border-color: var(--secondary);
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .member-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* ===== TIMER ===== */
+       
+
+        /* ===== CONTACT ===== */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(253, 255, 255, 0.397);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(10, 25, 47, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.377);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: inherit;
+            transition: border-color 0.3s;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 217, 0, 0.473);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.562);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.993);
+            }
+        }
+
+        /* ===== MOBILE RESPONSIVE STYLES ===== */
+        
+        /* Tablet (768px and below) */
+        @media (max-width: 768px) {
+            /* Navigation */
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding: 0 3%;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.5rem, 10vw, 4rem);
+            }
+
+            .hero .tagline {
+                font-size: clamp(1.1rem, 4vw, 1.3rem);
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 0.9rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            /* Sections */
+            section {
+                padding: 3rem 3%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            /* Topics Grid */
+            .topics-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .topic-card {
+                padding: 1.5rem;
+            }
+
+            .topic-motion {
+                font-size: 1.2rem;
+            }
+
+            /* Member Carousel */
+            .member-carousel {
+                gap: 1.5rem;
+                padding: 1rem 0 1.5rem;
+            }
+
+            .member-card {
+                min-width: 250px;
+                padding: 1.5rem;
+            }
+
+            .member-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+
+            /* Timer */
+            .timer-container {
+                padding: 1.5rem;
+            }
+
+            .timer-display {
+                gap: 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .time-unit {
+                padding: 1rem;
+                min-width: 70px;
+            }
+
+            .time-number {
+                font-size: 2.2rem;
+            }
+
+            /* Contact Form */
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .form-group {
+                margin-bottom: 1.2rem;
+            }
+        }
+
+        /* Mobile (480px and below) */
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            /* Navigation */
+            nav {
+                padding: 0.8rem 4%;
+            }
+
+            .mobile-menu {
+                width: 85%;
+                max-width: 280px;
+                padding: 5rem 1.5rem 2rem;
+            }
+
+            /* Hero */
+            .hero {
+                padding: 0 4%;
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 12vw, 3.5rem);
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                width: 90%;
+                max-width: 250px;
+            }
+
+            /* Sections */
+            section {
+                padding: 2.5rem 4%;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            /* Topics */
+            .topic-card {
+                padding: 1.2rem;
+            }
+
+            .topic-motion {
+                font-size: 1.1rem;
+            }
+
+            .topic-details {
+                font-size: 0.85rem;
+            }
+
+            /* Member Cards */
+            .member-card {
+                min-width: 220px;
+                padding: 1.2rem;
+            }
+
+            .member-name {
+                font-size: 1.1rem;
+            }
+
+            .member-avatar {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+
+            .stat-number {
+                font-size: 1.3rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            /* Timer */
+            .timer-display {
+                gap: 0.5rem;
+            }
+
+            .time-unit {
+                padding: 0.8rem;
+                min-width: 60px;
+                flex: 1;
+                max-width: 80px;
+            }
+
+            .time-number {
+                font-size: 1.8rem;
+            }
+
+            .time-label {
+                font-size: 0.8rem;
+            }
+
+            /* Footer */
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-links a {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            /* Form */
+            .contact-form {
+                padding: 1.2rem;
+            }
+
+            .submit-btn {
+                padding: 0.9rem;
+            }
+        }
+
+        /* Extra Small Mobile (320px and below) */
+        @media (max-width: 320px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .topic-card,
+            .member-card {
+                padding: 1rem;
+            }
+
+            .timer-display {
+                gap: 0.3rem;
+            }
+
+            .time-unit {
+                min-width: 50px;
+                padding: 0.6rem;
+            }
+
+            .time-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Landscape Mode for Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 4rem 5% 2rem;
+            }
+
+            .mobile-menu {
+                padding: 4rem 2rem 2rem;
+            }
+
+            .mobile-menu a {
+                padding: 0.7rem;
+                font-size: 1rem;
+            }
+
+            .timer-display {
+                gap: 0.8rem;
+            }
+
+            .time-unit {
+                min-width: 65px;
+                padding: 0.8rem;
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .topic-card:hover,
+            .member-card:hover,
+            .time-unit:hover {
+                transform: none;
+            }
+
+            .cta-button:hover,
+            .submit-btn:hover,
+            .social-links a:hover {
+                transform: none;
+            }
+
+            .nav-links a:hover::after {
+                width: 0;
+            }
+
+            /* Add active states for touch */
+            .topic-card:active,
+            .member-card:active,
+            .time-unit:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* Prevent text resize on orientation change */
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        /* Improve touch targets */
+        button,
+        a,
+        input,
+        textarea,
+        .topic-card,
+        .member-card {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Remove outline on focus for mobile */
+        @media (max-width: 768px) {
+            button:focus,
+            a:focus,
+            input:focus,
+            textarea:focus {
+                outline: none;
+            }
+        }
+
+        /* Font smoothing for mobile */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="Milton Margai- Debating Council" class="logo">
+                <img src="MMTU Logo.jpg" alt="Milton Margai- Debating Council logo">
+				Milton Margai Debating Council
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
+                <li><a href="MMTU DEBATING COUNCLE.HTML">Home</a></li>
+                <li><a href="Debates.html">Debates</a></li>
+                <li><a href="Members.html">Members</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Hamburger -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="MMTU DEBATING COUNCLE.HTML" onclick="closeMobileMenu()">Home</a>
+            <a href="Debates.html" onclick="closeMobileMenu()">Debates</a>
+            <a href="Members.html" onclick="closeMobileMenu()">Members</a>
+            <a href="Contact Us.html" onclick="closeMobileMenu()">Contact Us</a>
+        </div>
+        <div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Debate With Purpose & Speak With Passion </h1>
+            <p class="tagline">Sharpen your intellect, master the art of persuasion, and join the ultimate debating experience.</p>
+            <a href="Debates.html" class="cta-button">Explore Debates</a>
+        </div>
+    </section>
+
+    <!-- Debate Topics Section -->
+    <section id="DebatesSSS">
+        <h2 class="section-title">Upcoming Debates</h2>
+        <div class="topics-grid">
+            <div class="topic-card">
+                <span class="topic-status status-live">🔴 LIVE NOW</span>
+                <h3 class="topic-motion">Artificial Intelligence: Boon or Bane?</h3>
+                <p>Exploring the ethical implications and societal impact of AI in modern civilization.</p>
+                <div class="topic-details">
+                    <span>🏛️ Main Hall</span>
+                    <span>8:00 PM EST</span>
+                </div>
+            </div>
+            <div class="topic-card">
+                <span class="topic-status status-upcoming">UPCOMING</span>
+                <h3 class="topic-motion">Universal Basic Income: A Right or a Risk?</h3>
+                <p>Can UBI solve poverty or will it create economic stagnation?</p>
+                <div class="topic-details">
+                    <span>🏛️ Chamber A</span>
+                    <span>Tomorrow 7:00 PM</span>
+                </div>
+            </div>
+            <div class="topic-card">
+                <span class="topic-status status-upcoming">UPCOMING</span>
+                <h3 class="topic-motion">Space Exploration: Public vs Private Sector</h3>
+                <p>Who should lead humanity's journey to the stars?</p>
+                <div class="topic-details">
+                    <span>🏛️ Virtual Room</span>
+                    <span>Oct 28, 8:30 PM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members Section -->
+    <section id="members">
+        <h2 class="section-title">Featured Debaters</h2>
+        <div class="member-carousel" id="memberCarousel">
+            <div class="member-card">
+                <div class="member-avatar">ZS  </div>
+                <h3 class="member-name">Zainab Saffa</h3>
+                <p class="member-role">President of Debateing</p>
+                <p>3x National Champion specializing in policy debates.</p>
+                <div class="member-stats">
+                    <div class="stat">
+                        <span class="stat-number">47</span>
+                        <span class="stat-label">Wins</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Awards</span>
+                    </div>
+                </div>
+            </div>
+            <div class="member-card">
+                <div class="member-avatar">SMS</div>
+                <h3 class="member-name">Sidikie M Sesay</h3>
+                <p class="member-role">VP of Debateing Council</p>
+                <p>Expert in philosophical arguments and logical frameworks.</p>
+                <div class="member-stats">
+                    <div class="stat">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Wins</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Awards</span>
+                    </div>
+                </div>
+            </div>
+            <div class="member-card">
+                <div class="member-avatar">DK</div>
+                <h3 class="member-name">David Kim</h3>
+                <p class="member-role">Lead Strategist</p>
+                <p>Master of rebuttals and cross-examination tactics.</p>
+                <div class="member-stats">
+                    <div class="stat">
+                        <span class="stat-number">39</span>
+                        <span class="stat-label">Wins</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Awards</span>
+                    </div>
+                </div>
+            </div>
+            <div class="member-card">
+                <div class="member-avatar">LC</div>
+                <h3 class="member-name">Lisa Chen</h3>
+                <p class="member-role">Recruitment Chair</p>
+                <p>Specializes in public forum and spontaneous debates.</p>
+                <div class="member-stats">
+                    <div class="stat">
+                        <span class="stat-number">44</span>
+                        <span class="stat-label">Wins</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Awards</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Timer Section -->
+   
+    </section>
+
+    <!-- Contact Section -->
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Milton Margai Debating Council. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" title="Discord" aria-label="Discord">💬</a>
+            <a href="#" title="YouTube" aria-label="YouTube">▶️</a>
+            <a href="#" title="Twitter" aria-label="Twitter">🐦</a>
+            <a href="#" title="Email" aria-label="Email">✉️</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // ===== MOBILE MENU FUNCTIONALITY =====x
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const body = document.body;
+
+        function toggleMobileMenu() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            body.classList.toggle('no-scroll');
+        }
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            body.classList.remove('no-scroll');
+        }
+
+        hamburger.addEventListener('click', toggleMobileMenu);
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // Prevent body scroll when menu is open
+        document.addEventListener('touchmove', (e) => {
+            if (mobileMenu.classList.contains('active')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // ===== PARTICLE SYSTEM =====
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = window.innerWidth < 768 ? 50 : 100; // Reduce particles on mobile
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.3;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(100, 255, 218, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // ===== NAVBAR SCROLL EFFECT =====
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===== SMOOTH SCROLLING =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ===== COUNTDOWN TIMER =====
+        function updateCountdown() {
+            // Set the date for next debate (2 days from now for demo)
+            const countDownDate = new Date().getTime() + (2 * 24 * 60 * 60 * 1000);
+            
+            const interval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    document.querySelector('.timer-container h2').textContent = "Debate is Live!";
+                    document.getElementById('countdown').style.display = 'none';
+                }
+            }, 1000);
+        }
+
+        updateCountdown();
+
+        // ===== FORM SUBMISSION =====
+        document.getElementById('joinForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            const submitBtn = e.target.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                alert(`Thank you, ${data.name}! Your application has been received. We'll contact you at ${data.email} soon.`);
+                e.target.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // ===== SET REMINDER FUNCTION =====
+        function setReminder() {
+            if ('Notification' in window) {
+                if (Notification.permission === 'granted') {
+                    new Notification('Debate Reminder Set!', {
+                        body: 'You will be notified when the debate begins.',
+                        icon: '⚡'
+                    });
+                } else if (Notification.permission !== 'denied') {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === 'granted') {
+                            new Notification('Debate Reminder Set!', {
+                                body: 'You will be notified when the debate begins.',
+                                icon: '⚡'
+                            });
+                        }
+                    });
+                }
+            } else {
+                alert('Reminder set! You\'ll be notified when the debate begins.');
+            }
+        }
+
+        // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.topic-card, .member-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // ===== MEMBER CAROUSEL TOUCH SUPPORT =====
+        const carousel = document.getElementById('memberCarousel');
+        let isScrolling = false;
+        let startX = 0;
+        let scrollLeft = 0;
+
+        // Touch events for mobile scrolling
+        carousel.addEventListener('touchstart', (e) => {
+            isScrolling = true;
+            startX = e.touches[0].pageX - carousel.offsetLeft;
+            scrollLeft = carousel.scrollLeft;
+            carousel.style.scrollBehavior = 'auto';
+        });
+
+        carousel.addEventListener('touchmove', (e) => {
+            if (!isScrolling) return;
+            e.preventDefault();
+            const x = e.touches[0].pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 2;
+            carousel.scrollLeft = scrollLeft - walk;
+        });
+
+        carousel.addEventListener('touchend', () => {
+            isScrolling = false;
+            carousel.style.scrollBehavior = 'smooth';
+        });
+
+        // Auto-scroll for desktop, disabled on mobile
+        if (window.innerWidth > 768) {
+            const scrollInterval = setInterval(() => {
+                if (!isScrolling) {
+                    carousel.scrollLeft += 1;
+                    if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
+                        carousel.scrollLeft = 0;
+                    }
+                }
+            }, 30);
+
+            // Pause on hover
+            carousel.addEventListener('mouseenter', () => {
+                isScrolling = true;
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                isScrolling = false;
+            });
+        }
+
+        // ===== PERFORMANCE OPTIMIZATIONS =====
+        // Reduce animations on mobile devices
+        if (window.innerWidth < 768) {
+            const style = document.createElement('style');
+            style.textContent = `
+                * {
+                    animation-duration: 0.5s !important;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Lazy loading for images (if you add images later)
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            // Observe lazy images when you add them
+            // document.querySelectorAll('img.lazy').forEach(img => imageObserver.observe(img));
+        }
+
+        // ===== ACCESSIBILITY IMPROVEMENTS =====
+        // Add ARIA labels and keyboard navigation
+        document.querySelectorAll('.topic-card, .member-card, .time-unit').forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+
+        // Add no-scroll class when mobile menu is open
+        const style = document.createElement('style');
+        style.textContent = `
+            .no-scroll {
+                overflow: hidden;
+                height: 100vh;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
